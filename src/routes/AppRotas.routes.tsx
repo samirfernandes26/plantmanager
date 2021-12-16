@@ -1,22 +1,22 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from '../pages/comum/Login';
+import BemVindo from '../pages/BemVindo';
 
 
-const navegar =  createNativeStackNavigator();
+const Navegar =  createNativeStackNavigator();
 
 const AppRoutes: React.FC = () => (
-    <navegar.Navigator 
-        initialRouteName="Login"
+    <Navegar.Navigator 
+        initialRouteName="BemVindo"
         screenOptions={{ headerShown: false }}
     >
-        <navegar.Screen 
-        name="Login"
-        component={Login} 
+        <Navegar.Screen 
+        name="BemVindo"
+        component={BemVindo} 
         />
 
-    </navegar.Navigator>
+    </Navegar.Navigator>
 
 )
 
