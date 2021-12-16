@@ -1,0 +1,33 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+      "strict": true,
+      "allowJs": true,
+      "sourceMap": true,
+      "rootDir": "./",
+      "importHelpers": true,
+      "noImplicitAny": true,
+      "strictNullChecks": false,
+      "noImplicitThis": false,
+      "noUnusedLocals": true,
+      "noImplicitReturns": true,
+      "moduleResolution": "Node",
+      "baseUrl": "./src",
+      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "preserveConstEnums": true,
+      "forceConsistentCasingInFileNames": true,
+      "suppressImplicitAnyIndexErrors": true,
+      "skipLibCheck": true,
+      "noEmit": true,
+      "noEmitHelpers": true
+  },
+  "exclude": [
+      "node_modules",
+      "build"
+  ],
+  "compileOnSave": false
+
+}
