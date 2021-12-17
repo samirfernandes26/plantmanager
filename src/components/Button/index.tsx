@@ -4,21 +4,29 @@ import {
     Butt,
     TextButt
 } from './styles';
+import { Entypo } from '@expo/vector-icons'
 
 interface IButtonProps extends Omit<TouchableOpacityProps, 'activeOpacity'> {
-    title:string;
+    title?:string;
     error?: string;
     width?: number;
     height?: number;
+    nome_icon?:boolean;
 }
 
-export function Button({ height, width, title, ...res } : IButtonProps){
+export function Button({ nome_icon ,height, width, title, ...res } : IButtonProps){
     return(
         <Butt {...res}>
-            <TextButt>
-                {title}
-            </TextButt>
+            {   title && 
+                <TextButt> {title} </TextButt>
+            }
+            
+            { 
+                nome_icon &&
+                <Entypo name='chevron-thin-right' size={25} color={'#FFFFFF'}/>
+            }
         </Butt>
+        
     )
 
 }

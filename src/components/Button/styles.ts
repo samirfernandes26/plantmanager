@@ -24,19 +24,20 @@ export const Butt = styled.TouchableOpacity.attrs(
   ${({error}) => error && css`
     border-width: 1px;
     border-color: red;
-  `}
+  `};
 
   ${({width}) => width && css`
-    width: ${width}px
-  `}
+    width: ${width}px;
+  `};
 
   ${({height}) => height && css`
     height: ${height}px;
     border-color: red;
-  `}
+  `};
 
 `
 
 export const TextButt = styled.Text`
 
 `;
+
