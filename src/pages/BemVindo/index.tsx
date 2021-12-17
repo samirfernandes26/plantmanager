@@ -5,35 +5,31 @@ import {
     Header,
     Baseboard, 
     Illustration,
-    Butt,
-    TextButt
 } from './styles';
 
 import watering  from '../../assets/watering.png'
+import { Button } from '../../components/Button';
 
 const BemVindo: React.FC = () => {
-    
+
+        
     return (
         <Container>
             <Header>
-                Gerencie 
-                suas plantas deil
+                Gerencie {'\n'}
+                suas plantas de {`\n`}
                 forma fácil
             </Header>
 
             <Illustration source={watering}/>
             
             <Baseboard>
-            Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
-            sempre que precisar.
+                Não esqueça mais de regar suas {'\n'}
+                plantas. Nós cuidamos de lembrar você {'\n'}
+                sempre que precisar.
             </Baseboard>
 
-            <Butt>
-                <TextButt>
-                    Z
-                </TextButt>
-
-            </Butt>
+            <Button title='Z'/>
             
         </Container>
     )
