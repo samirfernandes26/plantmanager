@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import colors from '../../styles/colors';
+import fonts from './../../styles/fonts';
 
 export const Container = styled.SafeAreaView`
     flex: 1;
@@ -18,16 +19,17 @@ export const ContainerGeral = styled.View`
 
 export const Header = styled.Text`
   font-size: ${RFValue(30)}px;
-  font-weight: bold;
   text-align: center;
   margin-top: ${RFValue(38)}px;
   color: ${colors.heading};
+  font-family: ${fonts.bold};
 `;
 
 export const Baseboard = styled.Text`
     font-size: ${RFValue(14)}px;
     text-align: center;
     color: ${colors.heading};
+    font-family: ${fonts.regular};
 `;
 
 export const Illustration = styled.Image`
