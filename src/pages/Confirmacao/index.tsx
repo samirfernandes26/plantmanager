@@ -1,25 +1,80 @@
 import React, { useEffect, useState } from 'react';
 
+import { Platform } from 'react-native'
 import { 
     Container, 
-    Header, 
+    ContainerText, 
+    Emoji, 
+    Header,
+    Input,
+    KeyBoard,
+    SubContainer, 
 } from './styles';
 
 import { Button } from './../../components/Button';
 
 const Confirmacao: React.FC = () => {
+
+    const [isFocused, setIsFocused] = useState(false);
+    const [isfilled, setIsfilled] = useState(false);
+    const [name, setName] = useState<string>()
+
+    function handleInputBlur(){
+        setIsFocused(false);
+        setIsfilled(!!name)
+
+    }
+
+    function handleInputFocus(){
+        setIsFocused(true);
+
+    }
+
+    function handleInputChange(value: string){
+        setIsfilled(!!value);//duvida
+        setName(value);
+    }
     
     return (
         <Container>
 
-            <Header>
+            <KeyBoard behavior={Platform.OS === 'ios' ? 'padding' : 'height' } >
 
-                
-            </Header>
+                <SubContainer>
 
-            
-            <Button title={'confirmação'}  nome_icon={false}/>
-            
+                    <ContainerText>
+
+                        <Emoji> {isfilled ? '😃' : '😄'}  </Emoji>
+
+                        <Header>
+                            Como podemos {`\n`}
+                            chamar você?
+                        </Header>
+
+                    </ContainerText>
+
+
+                    <Input 
+                        placeholder='Digite seu nome'
+                        onBlur={handleInputBlur}
+                        onFocus={handleInputFocus}
+                        isFocused={isFocused} //se esta com foco
+                        isfilled={isfilled} //se esta preenchido
+                        onChangeText={handleInputChange}
+                    /> 
+
+                    <Button 
+                        title={'confirmação'} 
+                        width={231} 
+                        height={56} 
+                        top={20} 
+                        nome_icon={false}
+                    />
+
+                </SubContainer>
+
+            </KeyBoard>
+
         </Container>
     )
 }

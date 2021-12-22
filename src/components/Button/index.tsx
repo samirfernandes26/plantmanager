@@ -11,12 +11,13 @@ interface IButtonProps extends Omit<TouchableOpacityProps, 'activeOpacity'> {
     error?: string;
     width?: number;
     height?: number;
+    top ?: number;
     nome_icon?:boolean;
 }
 
-export function Button({ nome_icon ,height, width, title, ...res } : IButtonProps){
+export function Button({ nome_icon ,height, width, top, title, ...res } : IButtonProps){
     return(
-        <Butt {...res}>
+        <Butt {...res} width={width} height={height} top={top}>
             {   title && 
                 <TextButt> {title} </TextButt>
             }

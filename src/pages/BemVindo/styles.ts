@@ -7,13 +7,14 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     justify-content: space-around;
     align-items: center;
+    background-color: ${colors.background};
 `;
 
 export const ContainerGeral = styled.View`
     flex: 1;
     justify-content: space-around;
     align-items: center;
-    padding: 0 ${RFValue(20)}px; ;
+    padding: 0 ${RFValue(20)}px;
 `
 
 

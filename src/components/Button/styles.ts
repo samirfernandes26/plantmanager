@@ -1,10 +1,14 @@
 import styled, { css } from 'styled-components/native';
+import { RFValue } from 'react-native-responsive-fontsize';
 import colors from '../../styles/colors';
+import fonts from './../../styles/fonts';
+
 
 interface IButtonProp {
   error?: string;
   width?: number;
   height?: number;
+  top ?: number;
 }
 
 export const Butt = styled.TouchableOpacity.attrs(
@@ -16,10 +20,10 @@ export const Butt = styled.TouchableOpacity.attrs(
   background-color: ${colors.green};
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  margin-bottom: 10px;
-  height: 60px;
-  width: 60px;
+  border-radius: ${RFValue(16)}px;
+  margin-bottom: ${RFValue(10)}px;
+  height: ${RFValue(50)}px;
+  width: ${RFValue(50)}px;
 
   ${({error}) => error && css`
     border-width: 1px;
@@ -27,17 +31,25 @@ export const Butt = styled.TouchableOpacity.attrs(
   `};
 
   ${({width}) => width && css`
-    width: ${width}px;
+    width: ${RFValue(width)}px;
   `};
 
   ${({height}) => height && css`
-    height: ${height}px;
+    height: ${RFValue(height)}px;
+    border-color: red;
+  `};
+
+  ${({top}) => top && css`
+    margin-top: ${RFValue(top)}px;
     border-color: red;
   `};
 
 `
 
 export const TextButt = styled.Text`
-
+  font-size: ${RFValue(20)}px;
+  color: ${colors.white} ;
+  text-align: center;
+  font-family: ${fonts.regular};
 `;
 

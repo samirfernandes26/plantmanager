@@ -9,7 +9,7 @@ const Navegar =  createNativeStackNavigator();
 
 const AppRoutes: React.FC = () => (
     <Navegar.Navigator 
-        initialRouteName="BemVindo"
+        initialRouteName="Confirmacao"
         screenOptions={{ headerShown: false }}
     >
         <Navegar.Screen 
