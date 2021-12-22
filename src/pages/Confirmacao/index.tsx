@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Header, Body, } from './styles';
+import { 
+    Container, 
+    Header, 
+} from './styles';
+
+import { Button } from './../../components/Button';
 
 const Confirmacao: React.FC = () => {
     
@@ -12,11 +17,8 @@ const Confirmacao: React.FC = () => {
                 
             </Header>
 
-            <Body>
-                
-
             
-            </Body>
+            <Button title={'confirmação'}  nome_icon={false}/>
             
         </Container>
     )
