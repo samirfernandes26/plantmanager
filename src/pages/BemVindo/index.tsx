@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { 
     Container, 
     Header,
@@ -11,9 +11,14 @@ import watering  from '../../assets/watering.png'
 import { Button } from '../../components/Button';
 import { ContainerGeral } from './styles';
 
-const BemVindo: React.FC = () => {
+const BemVindo: React.FC = () => {3
 
-        
+    const navigation = useNavigation();
+
+    function handleStart(){
+        // navigation.navigate('Confirmacao')
+    }
+
     return (
         <Container>
             
@@ -33,7 +38,10 @@ const BemVindo: React.FC = () => {
                     sempre que precisar.
                 </Baseboard>
 
-                <Button nome_icon = {true}/>
+                <Button 
+                    nome_icon = {true}
+                    onPress={handleStart}
+                />
 
             </ContainerGeral>
             

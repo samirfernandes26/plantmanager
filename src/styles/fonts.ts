@@ -1,8 +1,8 @@
 export default {
-    extraLinght: 'SourceSansPro_200ExtraLight',
-    linght: 'SourceSansPro_300Light',
-    regular: 'SourceSansPro_400Regular',
-    semiBold: 'SourceSansPro_600SemiBold',
-    bold: 'SourceSansPro_700Bold',
-    black: 'SourceSansPro_900Black'
-}
+    extraLinght: 'RobotoSlab_200ExtraLight',
+    linght: 'RobotoSlab_300Light',
+    regular: 'RobotoSlab_400Regular',
+    semiBold: 'RobotoSlab_600SemiBold',
+    bold: 'RobotoSlab_700Bold',
+    black: 'RobotoSlab_900Black'
+}    

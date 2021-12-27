@@ -12,7 +12,7 @@ import {
 
 import { Button } from './../../components/Button';
 
-const Confirmacao: React.FC = () => {
+const Comecar: React.FC = () => {
     
     return (
         <Container>
@@ -48,4 +48,4 @@ const Confirmacao: React.FC = () => {
     )
 }
 
-export default Confirmacao;
+export default Comecar;

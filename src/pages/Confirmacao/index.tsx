@@ -12,12 +12,19 @@ import {
 } from './styles';
 
 import { Button } from './../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 const Confirmacao: React.FC = () => {
 
+    const navigation = useNavigation();
+
     const [isFocused, setIsFocused] = useState(false);
     const [isfilled, setIsfilled] = useState(false);
-    const [name, setName] = useState<string>()
+    const [name, setName] = useState<string>();
+
+    // function handleSubmit(){
+    //     navigation.navigate('Comecar')
+    // }
 
     function handleInputBlur(){
         setIsFocused(false);
