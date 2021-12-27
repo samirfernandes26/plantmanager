@@ -16,7 +16,7 @@ const BemVindo: React.FC = () => {3
     const navigation = useNavigation();
 
     function handleStart(){
-        // navigation.navigate('Confirmacao')
+        navigation.navigate('Confirmacao')
     }
 
     return (

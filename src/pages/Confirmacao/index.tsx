@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-import { Platform } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import { 
     Container, 
     ContainerText, 
     Emoji, 
     Header,
     Input,
-    KeyBoard,
+    SairTeclado,
     SubContainer, 
 } from './styles';
 
 import { Button } from './../../components/Button';
 import { useNavigation } from '@react-navigation/native';
+import { KeyBoard } from './styles';
 
 const Confirmacao: React.FC = () => {
 
@@ -22,9 +23,11 @@ const Confirmacao: React.FC = () => {
     const [isfilled, setIsfilled] = useState(false);
     const [name, setName] = useState<string>();
 
-    // function handleSubmit(){
-    //     navigation.navigate('Comecar')
-    // }
+    function handleSubmit(){
+        if (name) {
+            navigation.navigate('Comecar')
+        }
+    }
 
     function handleInputBlur(){
         setIsFocused(false);
@@ -47,38 +50,45 @@ const Confirmacao: React.FC = () => {
 
             <KeyBoard behavior={Platform.OS === 'ios' ? 'padding' : 'height' } >
 
-                <SubContainer>
+                <SairTeclado 
+                    onPress={Keyboard.dismiss}
+                >
 
-                    <ContainerText>
+                    <SubContainer>
 
-                        <Emoji> {isfilled ? '😃' : '😄'}  </Emoji>
+                        <ContainerText>
 
-                        <Header>
-                            Como podemos {`\n`}
-                            chamar você?
-                        </Header>
+                            <Emoji> {isfilled ? '😃' : '😄'}  </Emoji>
 
-                    </ContainerText>
+                            <Header>
+                                Como podemos {`\n`}
+                                chamar você?
+                            </Header>
+
+                        </ContainerText>
 
 
-                    <Input 
-                        placeholder='Digite seu nome'
-                        onBlur={handleInputBlur}
-                        onFocus={handleInputFocus}
-                        isFocused={isFocused} //se esta com foco
-                        isfilled={isfilled} //se esta preenchido
-                        onChangeText={handleInputChange}
-                    /> 
+                        <Input 
+                            placeholder='Digite seu nome'
+                            onBlur={handleInputBlur}
+                            onFocus={handleInputFocus}
+                            isFocused={isFocused} //se esta com foco
+                            isfilled={isfilled} //se esta preenchido
+                            onChangeText={handleInputChange}
+                        /> 
 
-                    <Button 
-                        title={'confirmação'} 
-                        width={231} 
-                        height={56} 
-                        top={20} 
-                        nome_icon={false}
-                    />
+                        <Button 
+                            title={'confirmação'} 
+                            width={231} 
+                            height={56} 
+                            top={20} 
+                            nome_icon={false}
+                            onPress={handleSubmit}
+                        />
 
-                </SubContainer>
+                    </SubContainer>
+
+                </SairTeclado>
 
             </KeyBoard>
 

@@ -73,4 +73,7 @@ export const Input = styled.TextInput<IInputProp>`
 
 `;
 
+export const SairTeclado = styled.TouchableWithoutFeedback`
+
+`
 
