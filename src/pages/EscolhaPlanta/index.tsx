@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, Header, Body, } from './styles';
+import { 
+    Container,
+    SubContainer,
+    TextoExtraLinght,
+    TextoSemiBold
+
+} from './styles';
+
+import {Header} from './../../components/Header'
+import { EnviromentButton } from './../../components/EnviromentButton';
 
 const EscolhaPlanta: React.FC = () => {
     
     return (
         <Container>
+            <SubContainer>
+                <Header 
+                    header='ola,' 
+                    nome='Samir'
+                />
 
-            <Header>
+                <TextoSemiBold>Em qual ambiente</TextoSemiBold>
 
-                
-            </Header>
+                <TextoExtraLinght>você quer colocar sua planta?</TextoExtraLinght>
 
-            <Body>
-                
-
-            
-            </Body>
-            
+                <EnviromentButton title='cozinha'/>
+            </SubContainer>
         </Container>
     )
 }
-
+// https://app.rocketseat.com.br/node/nlw-5-react-native/lesson/nlw-5-workshop-03-react-native
 export default EscolhaPlanta;

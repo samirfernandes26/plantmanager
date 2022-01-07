@@ -1,24 +1,39 @@
+import styled, { css } from 'styled-components/native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import colors from '../../styles/colors';
+import fonts from './../../styles/fonts';
 
-import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #0B75D7;
+    width: 100%;
+    align-items: center;
+    background-color: ${colors.background};
+    
 `;
 
-export const Header = styled.View`
-    width: 100%;
-    height: 200px;
-    align-items: center;
-    justify-content: center;
+export const SubContainer = styled.View`
+    width: 100%
+    padding: 0 ${RFValue(20)}px;
+    top: ${RFValue(30)}px;
 `;
 
-export const Body = styled.View`
-    background-color: #F1F1FA;
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    align-items: center;
+export const TextoSemiBold = styled.Text` 
+    font-size: ${RFValue(17)}px;
+    font-family: ${fonts.semiBold};
+    color: ${colors.heading};
+    margin-top:${RFValue(30)}px;
+    line-height: ${RFValue(20)}px;
+
 `;
+
+export const TextoExtraLinght = styled.Text` 
+    font-size: ${RFValue(17)}px;
+    font-family: ${fonts.extraLinght};
+    color: ${colors.heading};
+    line-height: ${RFValue(20)}px;
+`;
+
+
+
+
