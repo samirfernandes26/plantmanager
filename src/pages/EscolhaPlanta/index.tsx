@@ -8,6 +8,7 @@ import {
     TextoSemiBold
 
 } from './styles';
+import colors from '../../styles/colors';
 
 import {Header} from './../../components/Header'
 import { EnviromentButton } from './../../components/EnviromentButton';
@@ -16,7 +17,7 @@ import { Load } from './../../components/Load';
 
 
 import { FlatList } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ActivityIndicator } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import ApiServices from './../../services/Api/apiServices';
 
@@ -47,7 +48,12 @@ const EscolhaPlanta: React.FC = () => {
     const [filteredPlantas, setFilteredPlantas] = useState<IPlantProps[]>([]);
     const [plantaSelecte, setPlantaSelecte] = useState();
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [loadingAll, setLoadingAll] = useState(false);
+
+    const [page, setPage] = useState(1);
+    
     
     function handleEnviromentsSelecte(enviroment: string) {
         setEnviromentsSelecte(enviroment);
@@ -60,6 +66,16 @@ const EscolhaPlanta: React.FC = () => {
         setFilteredPlantas(filtered)
     }
 
+    function handleFetchMOre(distance: number){
+        if(distance < 1){
+            return;
+        }
+        setLoadingMore(true);
+        setPage(oldValue => oldValue + 1);
+        fetchPlantas();
+    }
+
+    
     useEffect(() => {
         async function fetchEviroment() {
             ApiServices
@@ -77,14 +93,26 @@ const EscolhaPlanta: React.FC = () => {
         fetchEviroment();
     }, []);
 
-    useEffect(() => {
-        async function fetchPlantas() {
-            ApiServices.get<IPlantProps[]>('plants?_sort=name&_order=asc').then((response) => {
+    async function fetchPlantas() {
+        ApiServices.get<IPlantProps[]>(`plants?_sort=name&_order=asc&_page=${page}&_limit=2`).then((response) => {
+            if(!response.data){
+                return setLoading(true)
+            }
+
+            if(page > 1){
+                setPlantas(oldvalue =>[...oldvalue, ...response.data]);
+                setFilteredPlantas(response.data)
+
+            }else{
                 setPlantas(response.data)
                 setFilteredPlantas(response.data)
-                setLoading(false)
-            })            
-        }
+            }
+
+            setLoading(false);
+            setLoadingMore(false);
+        })            
+    }
+    useEffect(() => {
         fetchPlantas();
     }, []);
 
@@ -136,7 +164,14 @@ const EscolhaPlanta: React.FC = () => {
                 )}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
+                onEndReachedThreshold={0.1} //quando chegar a 10% do fim da dela
+                onEndReached={({distanceFromEnd}) => handleFetchMOre(distanceFromEnd)}
                 contentContainerStyle={styles.contentContainerStyle}
+                ListFooterComponent={
+                    loadingMore 
+                    ? <ActivityIndicator color={colors.green} />
+                    : <></>
+                }
             />
                 
             </SubContainer>
