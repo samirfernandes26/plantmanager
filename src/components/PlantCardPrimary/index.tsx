@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
         borderRadius: RFValue(20),
         paddingVertical: RFValue(10),
         alignItems: 'center',
-        margin: RFValue(10)
+        margin: RFValue(8),
     },
 })
