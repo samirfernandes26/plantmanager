@@ -48,6 +48,12 @@ const EscolhaPlanta: React.FC = () => {
     function handleEnviromentsSelecte(enviroment: string) {
         setEnviromentsSelecte(enviroment);
 
+        if(enviroment === 'all'){
+            return setFilteredPlantas(plantas);
+        }
+
+        const filtered = plantas.filter(planta => planta.environments.includes(enviroment));
+        setFilteredPlantas(filtered)
     }
 
     useEffect(() => {
