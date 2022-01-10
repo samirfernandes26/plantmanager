@@ -33,7 +33,7 @@ const EscolhaPlanta: React.FC = () => {
     }, [])
 
     async function fetchEviroment() {
-        const { data } = await apiServices.get('plants_environments')
+        const { data } = await ApiServices.get('plants_environments')
         setEnviroments( data )
     }
     
