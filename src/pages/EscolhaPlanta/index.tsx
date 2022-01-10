@@ -12,6 +12,8 @@ import {
 import {Header} from './../../components/Header'
 import { EnviromentButton } from './../../components/EnviromentButton';
 import { PlantCardPrimary } from './../../components/PlantCardPrimary';
+import { Load } from './../../components/Load';
+
 
 import { FlatList } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
@@ -45,6 +47,7 @@ const EscolhaPlanta: React.FC = () => {
     const [filteredPlantas, setFilteredPlantas] = useState<IPlantProps[]>([]);
     const [plantaSelecte, setPlantaSelecte] = useState();
 
+    const [loading, setLoading] = useState(true)
     
     function handleEnviromentsSelecte(enviroment: string) {
         setEnviromentsSelecte(enviroment);
@@ -78,6 +81,8 @@ const EscolhaPlanta: React.FC = () => {
         async function fetchPlantas() {
             ApiServices.get<IPlantProps[]>('plants?_sort=name&_order=asc').then((response) => {
                 setPlantas(response.data)
+                setFilteredPlantas(response.data)
+                setLoading(false)
             })            
         }
         fetchPlantas();
@@ -86,6 +91,9 @@ const EscolhaPlanta: React.FC = () => {
 
     
     
+    if(loading){
+        return <Load/>
+    }
     return (
         <Container>
             <SubContainer>
@@ -119,7 +127,7 @@ const EscolhaPlanta: React.FC = () => {
             <SubContainer>
 
             <FlatList
-                data={plantas}
+                data={filteredPlantas}
                 renderItem={({item}) => (
                     <PlantCardPrimary 
                         name={item.name} 
