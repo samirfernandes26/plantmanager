@@ -15,7 +15,7 @@ import { EnviromentButton } from './../../components/EnviromentButton';
 import { FlatList } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import apiServices from 'services/Api/apiServices';
+import ApiServices from 'services/Api/apiServices';
 
 
 interface IEnvieroments {
