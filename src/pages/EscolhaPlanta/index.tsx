@@ -15,7 +15,7 @@ import { EnviromentButton } from './../../components/EnviromentButton';
 import { FlatList } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import ApiServices from 'services/Api/apiServices';
+import ApiServices from './../../services/Api/apiServices';
 
 
 interface IEnvieroments {
@@ -27,15 +27,16 @@ const EscolhaPlanta: React.FC = () => {
     const [enviroments, setEnviroments] = useState<IEnvieroments[]>([]);
 
     useEffect(() => {
+        async function fetchEviroment() {
+            const {data} = await ApiServices.get('plants_environments')
+            setEnviroments(data)
+        }
 
         fetchEviroment();
 
     }, [])
 
-    async function fetchEviroment() {
-        const { data } = await ApiServices.get('plants_environments')
-        setEnviroments( data )
-    }
+    
     
     return (
         <Container>
