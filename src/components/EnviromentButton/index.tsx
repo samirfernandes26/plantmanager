@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
         height: RFValue(40),
         borderRadius:RFValue(10),
         alignItems: 'center',
-        justifyContent: 'center'        
+        justifyContent: 'center',
+        marginRight: RFValue(8)
     },
     containerActive: {
         backgroundColor: colors.green_light,

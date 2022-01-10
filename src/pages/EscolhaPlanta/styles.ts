@@ -34,6 +34,8 @@ export const TextoExtraLinght = styled.Text`
     line-height: ${RFValue(20)}px;
 `;
 
-
-
+export const ContainerList = styled.View`
+    width: 100%
+    top: ${RFValue(15)}px;
+`
 

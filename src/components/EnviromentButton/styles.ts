@@ -17,6 +17,6 @@ export const Texto1 = styled.Text<IButtonProp>`
     ${({active}) => active && css`
         color: ${colors.green_dark};
         font-family: ${fonts.bold};
-
+        
     `}
   `

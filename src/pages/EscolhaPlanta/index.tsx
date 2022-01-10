@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { 
     Container,
+    ContainerList,
     SubContainer,
     TextoExtraLinght,
     TextoSemiBold
@@ -11,7 +12,30 @@ import {
 import {Header} from './../../components/Header'
 import { EnviromentButton } from './../../components/EnviromentButton';
 
+import { FlatList } from 'react-native-gesture-handler';
+import { StyleSheet } from 'react-native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import apiServices from 'services/Api/apiServices';
+
+
+interface IEnvieroments {
+    key:string;
+    title: string;
+}
+
 const EscolhaPlanta: React.FC = () => {
+    const [enviroments, setEnviroments] = useState<IEnvieroments[]>([]);
+
+    useEffect(() => {
+
+        fetchEviroment();
+
+    }, [])
+
+    async function fetchEviroment() {
+        const { data } = await apiServices.get('plants_environments')
+        setEnviroments( data )
+    }
     
     return (
         <Container>
@@ -24,11 +48,34 @@ const EscolhaPlanta: React.FC = () => {
                 <TextoSemiBold>Em qual ambiente</TextoSemiBold>
 
                 <TextoExtraLinght>você quer colocar sua planta?</TextoExtraLinght>
-
-                <EnviromentButton title='cozinha'/>
+                
             </SubContainer>
+
+            <ContainerList>
+                    <FlatList
+                        data={enviroments}
+                        renderItem={(item) => (
+                            <EnviromentButton title='cozinha'/>
+                        )}
+                        horizontal
+                        showsHorizontalScrollIndicator = {false}
+                        contentContainerStyle={styles.enviromentList}
+                    />
+                </ContainerList>
         </Container>
     )
 }
 // https://app.rocketseat.com.br/node/nlw-5-react-native/lesson/nlw-5-workshop-03-react-native
 export default EscolhaPlanta;
+
+const styles = StyleSheet.create({
+
+    enviromentList:{
+        height: RFValue(40),
+        justifyContent: 'center',
+        paddingBottom: RFValue(5),
+        marginLeft: RFValue(20),
+        marginVertical: RFValue(32)
+    }
+
+})
