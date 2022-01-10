@@ -39,7 +39,15 @@ interface IPlantProps {
 
 const EscolhaPlanta: React.FC = () => {
     const [enviroments, setEnviroments] = useState<IEnvieroments[]>([]);
+    const [enviromentsSelecte, setEnviromentsSelecte] = useState('all');
+
     const [plantas, setPlantas] = useState<IPlantProps[]>([]);
+
+    
+    function handleEnviromentsSelecte(enviroment: string) {
+        setEnviromentsSelecte(enviroment);
+
+    }
 
     useEffect(() => {
         async function fetchEviroment() {
@@ -88,7 +96,11 @@ const EscolhaPlanta: React.FC = () => {
                 <FlatList
                     data={enviroments}
                     renderItem={({item}) => (
-                        <EnviromentButton title={item.title}/>
+                        <EnviromentButton 
+                            title={item.title} 
+                            active={item.key === enviromentsSelecte}
+                            onPress={() => handleEnviromentsSelecte(item.key)}
+                        />
                     )}
                     horizontal
                     showsHorizontalScrollIndicator = {false}
