@@ -56,7 +56,7 @@ const EscolhaPlanta: React.FC = () => {
             })
         }
         fetchEviroment();
-    }, [])
+    }, []);
 
     useEffect(() => {
         async function fetchPlantas() {
@@ -65,7 +65,8 @@ const EscolhaPlanta: React.FC = () => {
             })            
         }
         fetchPlantas();
-    }, [])
+    }, []);
+
 
     
     
