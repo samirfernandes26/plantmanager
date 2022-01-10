@@ -101,7 +101,10 @@ const EscolhaPlanta: React.FC = () => {
             <FlatList
                 data={plantas}
                 renderItem={({item}) => (
-                    <PlantCardPrimary name={item.name} photo={item.photo}/>
+                    <PlantCardPrimary 
+                        name={item.name} 
+                        photo={item.photo}
+                    />
                 )}
                 showsVerticalScrollIndicator={false}
                 numColumns={2}
