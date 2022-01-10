@@ -43,6 +43,7 @@ const EscolhaPlanta: React.FC = () => {
 
     const [plantas, setPlantas] = useState<IPlantProps[]>([]);
     const [filteredPlantas, setFilteredPlantas] = useState<IPlantProps[]>([]);
+    const [plantaSelecte, setPlantaSelecte] = useState();
 
     
     function handleEnviromentsSelecte(enviroment: string) {
@@ -106,7 +107,7 @@ const EscolhaPlanta: React.FC = () => {
                         <EnviromentButton 
                             title={item.title} 
                             active={item.key === enviromentsSelecte}
-                            onPress={() => handleEnviromentsSelecte(item.key)}
+                            onPress={()=>handleEnviromentsSelecte(item.key)}
                         />
                     )}
                     horizontal
