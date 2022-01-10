@@ -42,6 +42,7 @@ const EscolhaPlanta: React.FC = () => {
     const [enviromentsSelecte, setEnviromentsSelecte] = useState('all');
 
     const [plantas, setPlantas] = useState<IPlantProps[]>([]);
+    const [filteredPlantas, setFilteredPlantas] = useState<IPlantProps[]>([]);
 
     
     function handleEnviromentsSelecte(enviroment: string) {
