@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-import { Keyboard, Platform } from 'react-native'
+import AsyncStorege from '@react-native-async-storage/async-storage'
+import { Keyboard, Platform, Alert } from 'react-native'
 import { 
     Container, 
     ContainerText, 
@@ -10,6 +10,7 @@ import {
     SairTeclado,
     SubContainer, 
 } from './styles';
+
 
 import { Button } from './../../components/Button';
 import { useNavigation } from '@react-navigation/native';
@@ -23,16 +24,25 @@ const Confirmacao: React.FC = () => {
     const [isfilled, setIsfilled] = useState(false);
     const [name, setName] = useState<string>();
 
-    function handleSubmit(){
-        if (name) {
-            navigation.navigate('Comecar');
+    async function handleSubmit(){
+
+        const userName =  await AsyncStorege.getItem('@plantManager:user');
+        if(userName){
+            setName(userName);
         }
+        
+        if (name || userName) {
+            AsyncStorege.setItem('@plantManager:user', name);
+            navigation.navigate('Comecar');
+        }else{
+            return Alert.alert('Olá, Me diga como posso te chamar 😎');
+        }
+        
     }
 
     function handleInputBlur(){
         setIsFocused(false);
         setIsfilled(!!name)
-
     }
 
     function handleInputFocus(){

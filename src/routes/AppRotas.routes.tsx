@@ -11,7 +11,7 @@ const Navegar =  createNativeStackNavigator();
 
 const AppRoutes: React.FC = () => (
     <Navegar.Navigator 
-        initialRouteName="EscolhaPlanta"
+        initialRouteName="BemVindo"
         screenOptions={{ 
             headerShown: false,
         }}

@@ -11,8 +11,14 @@ import {
 } from './styles';
 
 import { Button } from './../../components/Button';
+import { useNavigation } from '@react-navigation/native';
 
 const Comecar: React.FC = () => {
+    const navigation = useNavigation();
+
+    function handleSubmit(){
+        navigation.navigate('EscolhaPlanta');
+    }
     
     return (
         <Container>
@@ -38,6 +44,7 @@ const Comecar: React.FC = () => {
                         height={56} 
                         top={40} 
                         nome_icon={false}
+                        onPress={handleSubmit}
                     />
 
                 </SubContainer>

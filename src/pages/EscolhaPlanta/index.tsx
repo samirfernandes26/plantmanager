@@ -128,8 +128,7 @@ const EscolhaPlanta: React.FC = () => {
         <Container>
             <SubContainer>
                 <Header 
-                    header='ola,' 
-                    nome='Samir'
+                    header='ola,'
                 />
 
                 <TextoSemiBold>Em qual ambiente</TextoSemiBold>
