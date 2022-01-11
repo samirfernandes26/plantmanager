@@ -51,7 +51,6 @@ const EscolhaPlanta: React.FC = () => {
 
     const [loading, setLoading] = useState(true);
     const [loadingMore, setLoadingMore] = useState(false);
-    const [loadingAll, setLoadingAll] = useState(false);
 
     const [page, setPage] = useState(1);
     
@@ -140,6 +139,7 @@ const EscolhaPlanta: React.FC = () => {
             <ContainerList>
                 <FlatList
                     data={enviroments}
+                    keyExtractor={(item) => String(item.key)}
                     renderItem={({item}) => (
                         <EnviromentButton 
                             title={item.title} 
@@ -158,6 +158,7 @@ const EscolhaPlanta: React.FC = () => {
             <FlatList
                 enabled
                 data={filteredPlantas}
+                keyExtractor={(item) => String(item.id)}
                 renderItem={({item}) => (
                     <PlantCardPrimary 
                         name={item.name} 
