@@ -5,6 +5,7 @@ import BemVindo from '../pages/BemVindo';
 import Confirmacao from '../pages/Confirmacao';
 import Comeca from '../pages/Comecar';
 import EscolhaPlanta from '../pages/EscolhaPlanta';
+import Planta from '../pages/Planta';
 
 
 const Navegar =  createNativeStackNavigator();
@@ -12,6 +13,7 @@ const Navegar =  createNativeStackNavigator();
 const AppRoutes: React.FC = () => (
     <Navegar.Navigator 
         initialRouteName="BemVindo"
+        // initialRouteName="Planta"
         screenOptions={{ 
             headerShown: false,
         }}
@@ -31,9 +33,14 @@ const AppRoutes: React.FC = () => (
             component={Comeca}
         />
 
-<Navegar.Screen 
+        <Navegar.Screen 
             name='EscolhaPlanta'
             component={EscolhaPlanta}
+        />
+
+        <Navegar.Screen 
+            name='Planta'
+            component={Planta}
         />
 
     </Navegar.Navigator>

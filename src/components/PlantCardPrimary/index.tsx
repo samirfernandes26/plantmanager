@@ -6,17 +6,13 @@ import { RectButtonProps, RectButton } from 'react-native-gesture-handler'
 
 import colors from '../../styles/colors';
 import { SvgCssUri } from 'react-native-svg';
+import {IPlantProps} from '../../libs/storage'
 
 
 import {
     TextoButton,
 } from './styles';
 
-interface IPlantProps extends RectButtonProps {
-
-    name: string;
-    photo?: string;
-}
 
 export function PlantCardPrimary ({name, photo, ...rest}:IPlantProps){
     return(

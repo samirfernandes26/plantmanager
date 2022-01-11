@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { 
     Container,
@@ -15,7 +16,7 @@ import {Header} from './../../components/Header'
 import { EnviromentButton } from './../../components/EnviromentButton';
 import { PlantCardPrimary } from './../../components/PlantCardPrimary';
 import { Load } from './../../components/Load';
-
+import {IPlantProps} from '../../libs/storage'
 
 import { FlatList } from 'react-native-gesture-handler';
 import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
@@ -28,20 +29,10 @@ interface IEnvieroments {
     title: string;
 }
 
-interface IPlantProps {
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-        times: number,
-        repeat_every: string;
-    }
-}
 
 const EscolhaPlanta: React.FC = () => {
+    const navigation = useNavigation();
+
     const [enviroments, setEnviroments] = useState<IEnvieroments[]>([]);
     const [enviromentsSelecte, setEnviromentsSelecte] = useState('all');
 
@@ -74,6 +65,10 @@ const EscolhaPlanta: React.FC = () => {
         setLoadingMore(true);
         setPage(oldValue => oldValue + 1);
         fetchPlantas();
+    }
+
+    function handlePlantsSelect(plant:IPlantProps){
+        navigation.navigate('Planta', {dataPlanta: plant})
     }
 
     
@@ -163,6 +158,7 @@ const EscolhaPlanta: React.FC = () => {
                     <PlantCardPrimary 
                         name={item.name} 
                         photo={item.photo}
+                        onPress={() => handlePlantsSelect(item) }
                     />
                 )}
                 showsVerticalScrollIndicator={false}
