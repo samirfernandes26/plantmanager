@@ -13,9 +13,14 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const SubContainer = styled.View`
-    width: 100%
+    width: 100%;
     padding: 0 ${RFValue(20)}px;
     top: ${RFValue(30)}px;
+`;
+
+export const SubContainerList = styled.View`
+    flex: 1;
+    width: 100%;
 `;
 
 export const TextoSemiBold = styled.Text` 

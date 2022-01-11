@@ -25,7 +25,7 @@ const Confirmacao: React.FC = () => {
 
     function handleSubmit(){
         if (name) {
-            navigation.navigate('Comecar')
+            navigation.navigate('Comecar');
         }
     }
 

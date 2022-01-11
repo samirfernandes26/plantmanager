@@ -4,6 +4,7 @@ import {
     Container,
     ContainerList,
     SubContainer,
+    SubContainerList,
     TextoExtraLinght,
     TextoSemiBold
 
@@ -17,7 +18,7 @@ import { Load } from './../../components/Load';
 
 
 import { FlatList } from 'react-native-gesture-handler';
-import { StyleSheet, ActivityIndicator } from 'react-native';
+import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import ApiServices from './../../services/Api/apiServices';
 
@@ -63,13 +64,14 @@ const EscolhaPlanta: React.FC = () => {
         }
 
         const filtered = plantas.filter(planta => planta.environments.includes(enviroment));
-        setFilteredPlantas(filtered)
+        setFilteredPlantas(filtered);
     }
 
     function handleFetchMOre(distance: number){
         if(distance < 1){
             return;
         }
+
         setLoadingMore(true);
         setPage(oldValue => oldValue + 1);
         fetchPlantas();
@@ -94,18 +96,18 @@ const EscolhaPlanta: React.FC = () => {
     }, []);
 
     async function fetchPlantas() {
-        ApiServices.get<IPlantProps[]>(`plants?_sort=name&_order=asc&_page=${page}&_limit=2`).then((response) => {
+        ApiServices.get<IPlantProps[]>(`plants?_sort=name&_order=asc&_page=${page}&_limit=10`).then((response) => {
             if(!response.data){
                 return setLoading(true)
             }
 
             if(page > 1){
                 setPlantas(oldvalue =>[...oldvalue, ...response.data]);
-                setFilteredPlantas(response.data)
+                setFilteredPlantas(oldvalue =>[...oldvalue, ...response.data])
 
             }else{
                 setPlantas(response.data)
-                setFilteredPlantas(response.data)
+                setFilteredPlantas(response.data);
             }
 
             setLoading(false);
@@ -143,7 +145,7 @@ const EscolhaPlanta: React.FC = () => {
                         <EnviromentButton 
                             title={item.title} 
                             active={item.key === enviromentsSelecte}
-                            onPress={()=>handleEnviromentsSelecte(item.key)}
+                            onPress={() => handleEnviromentsSelecte(item.key)}
                         />
                     )}
                     horizontal
@@ -152,9 +154,10 @@ const EscolhaPlanta: React.FC = () => {
                 />
             </ContainerList>
                 
-            <SubContainer>
+            <SubContainerList>
 
             <FlatList
+                enabled
                 data={filteredPlantas}
                 renderItem={({item}) => (
                     <PlantCardPrimary 
@@ -174,7 +177,7 @@ const EscolhaPlanta: React.FC = () => {
                 }
             />
                 
-            </SubContainer>
+            </SubContainerList>
 
         </Container>
     )
@@ -188,6 +191,7 @@ const styles = StyleSheet.create({
         height: RFValue(40),
         justifyContent: 'center',
         paddingBottom: RFValue(5),
+        paddingRight: RFValue(32),
         marginLeft: RFValue(20),
         marginVertical: RFValue(32)
     },
