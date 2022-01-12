@@ -66,7 +66,8 @@ const Planta: React.FC = () => {
             await savePlant({
                 ...dataPlanta,
                 dateTimeNotification:selectedDateTime
-            })
+            });
+            navigation.navigate('TudoCerto');
 
         } catch (error) {
             return Alert.alert('Não foi possivel salvar sua planta 🎭');
