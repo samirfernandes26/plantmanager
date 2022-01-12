@@ -17,7 +17,7 @@ export const SubContconainer = styled.View`
     background-color: ${colors.shape};
     justify-content: center;
     align-items: center;
-    padding: ${RFValue(20)}px;
+    padding: ${RFValue(25)}px;
 `;
 
 export const NamePlanta = styled.Text`

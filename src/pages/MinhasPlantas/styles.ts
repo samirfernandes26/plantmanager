@@ -12,12 +12,10 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const SubContconainer = styled.View`
-    flex: 2;
+    flex: 1;
     width: 100%;
     background-color: ${colors.shape};
-    justify-content: center;
-    align-items: center;
-    padding: ${RFValue(20)}px;
+    padding: ${RFValue(25)}px;
 `;
 
 export const NamePlanta = styled.Text`
@@ -26,4 +24,33 @@ export const NamePlanta = styled.Text`
     margin-top: ${RFValue(20)}px;
     color: ${colors.heading};
     font-family: ${fonts.bold};
+`;
+
+export const TipContainer = styled.View`
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: ${RFValue(16)}px;
+    margin-top: ${RFValue(40)}px;
+    margin-bottom: ${RFValue(40)}px;
+    padding: ${RFValue(10)}px;
+    background-color: ${colors.blue_light};
+    
+    
+
+`;
+
+export const ImageGota = styled.Image`
+    height: ${RFValue(50)}px;
+    width: ${RFValue(50)}px;
+`;
+
+export const SubDica = styled.Text`
+    flex: 1;
+    font-size: ${RFValue(12)}px;
+    text-align: justify;
+    margin-left: ${RFValue(10)}px;
+    color: ${colors.blue};
+    font-family: ${fonts.extraLinght};
 `;
