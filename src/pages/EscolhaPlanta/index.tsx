@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, ActivityIndicator} from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 import { 
     Container,
@@ -18,9 +21,6 @@ import { PlantCardPrimary } from './../../components/PlantCardPrimary';
 import { Load } from './../../components/Load';
 import {IPlantProps} from '../../libs/storage'
 
-import { FlatList } from 'react-native-gesture-handler';
-import { StyleSheet, ActivityIndicator, View, Text } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import ApiServices from './../../services/Api/apiServices';
 
 

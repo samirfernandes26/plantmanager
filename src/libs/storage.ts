@@ -2,17 +2,18 @@ import AsyncStorege from '@react-native-async-storage/async-storage'
 import { isBefore, format } from 'date-fns'
 
 export interface IPlantProps{
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-        times: number,
-        repeat_every: string;
+    id?: string;
+    name?: string;
+    about?: string;
+    water_tips?: string;
+    photo?: string;
+    environments?: [string];
+    frequency?: {
+        times?: number,
+        repeat_every?: string;
     }
     dateTimeNotification?: Date;
+    promximaRega?:string;
 }
 
 interface IStoragePlantProps {
