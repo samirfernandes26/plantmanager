@@ -40,7 +40,7 @@ export async function savePlant(plant:IPlantProps):Promise<void>{
     }
 }
 
-export async function LoadPlant():Promise<IPlantProps[]>{
+export async function loadPlant():Promise<IPlantProps[]>{
     try {
         const data = await AsyncStorege.getItem('@plantManager:plants');
         const plants = data ? (JSON.parse(data) as IStoragePlantProps): {};

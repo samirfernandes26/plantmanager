@@ -13,10 +13,11 @@ import {
 
 interface IHeader {
     header?:string;
-    imagem?: string
+    imagem?: string;
+    nome?:string
 }
 
-export function Header ({header,  imagem, ...res}: IHeader) {
+export function Header ({header, nome,  imagem, ...res}: IHeader) {
     const [userName, setUserName] = useState<string>();
 
     async function loadStorageUserName(){
@@ -34,8 +35,8 @@ export function Header ({header,  imagem, ...res}: IHeader) {
 
                 <Texto1>{header}</Texto1>
 
-                <Texto2>{userName}</Texto2>
-
+                <Texto2>{nome ? nome : userName}</Texto2>
+                
             </ContainerTitle>
 
             <ContainerPhoto source={perfil}/>
