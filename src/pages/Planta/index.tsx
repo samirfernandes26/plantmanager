@@ -23,7 +23,7 @@ import {
 
 
 import colors from './../../styles/colors';
-import {IPlantProps, LoadPlant, savePlant} from './../../libs/storage'
+import {IPlantProps, loadPlant, savePlant} from './../../libs/storage'
 import waterdrop from './../../assets/waterdrop.png'
 import { Button } from './../../components/Button';
 

@@ -1,24 +1,29 @@
+import styled, { css } from 'styled-components/native';
+import { RFValue } from 'react-native-responsive-fontsize';
+import colors from '../../styles/colors';
+import fonts from './../../styles/fonts';
 
-import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
-
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
     flex: 1;
-    background-color: #0B75D7;
+    width: 100%;
+    background-color: ${colors.shape};
+    justify-content: space-between;
+    
 `;
 
-export const Header = styled.View`
+export const SubContconainer = styled.View`
+    flex: 2;
     width: 100%;
-    height: 200px;
-    align-items: center;
+    background-color: ${colors.shape};
     justify-content: center;
+    align-items: center;
+    padding: ${RFValue(20)}px;
 `;
 
-export const Body = styled.View`
-    background-color: #F1F1FA;
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    align-items: center;
+export const NamePlanta = styled.Text`
+    font-size: ${RFValue(20)}px;
+    text-align: center;
+    margin-top: ${RFValue(20)}px;
+    color: ${colors.heading};
+    font-family: ${fonts.bold};
 `;
