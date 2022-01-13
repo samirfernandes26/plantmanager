@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -20,6 +21,7 @@ const AuthRoutes: React.FC = () => {
                 tabBarInactiveTintColor: colors.heading,
                 tabBarLabelPosition: 'beside-icon',
                 tabBarStyle:{
+                    paddingVertical: Platform.OS === 'ios' ? RFValue(15) : 0,
                     height: RFValue(50)
                 },
                 headerShown: false,

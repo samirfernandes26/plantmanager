@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppLoading from 'expo-app-loading';
+import * as Notifications from 'expo-notifications'
 
 // import {
 //     useFonts,
@@ -24,6 +25,7 @@ import {
 
 import Routes from './src/routes';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { IPlantProps } from './src/libs/storage';
 
 
 
@@ -37,6 +39,17 @@ export default function App() {
         RobotoSlab_700Bold,
         RobotoSlab_900Black
     });
+
+    useEffect(() => {
+        const subscription = Notifications.addNotificationReceivedListener(
+            async notification => {
+                const data = notification.request.content.data.plant as IPlantProps;
+                console.log(data);
+            
+        })
+        return () => subscription.remove()
+    }, [])
+
 
     if(fontsLoaded){
         <AppLoading/>

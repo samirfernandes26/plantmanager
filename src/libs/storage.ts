@@ -20,7 +20,8 @@ export interface IPlantProps{
 
 export interface IStoragePlantProps {
     [ id: string]:{
-        data:IPlantProps
+        data:IPlantProps,
+        notificationId: string
     }
 }
 
@@ -38,13 +39,14 @@ export async function savePlant(plant:IPlantProps):Promise<void>{
             const inverval = Math.trunc(7 / times);
             nexTime.setDate(now.getDate() + inverval);
 
-        }else{
-
-            nexTime.setDate(nexTime.getDate() + 1);
-
         }
+        // else{
 
-        const seconds = Math.abs(Math.ceil(now.getTime() - nexTime.getTime()/1000));
+        //     nexTime.setDate(nexTime.getDate() + 1);
+
+        // }
+
+        const seconds = Math.abs((Math.ceil(now.getTime() - nexTime.getTime())/1000));
 
         const notificationId = await Notifications.scheduleNotificationAsync({
             content:{
