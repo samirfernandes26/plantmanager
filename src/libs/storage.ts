@@ -14,9 +14,10 @@ export interface IPlantProps{
     }
     dateTimeNotification?: Date;
     promximaRega?:Date;
+    handleRemove: () => void
 }
 
-interface IStoragePlantProps {
+export interface IStoragePlantProps {
     [ id: string]:{
         data:IPlantProps
     }
@@ -24,6 +25,26 @@ interface IStoragePlantProps {
 
 export async function savePlant(plant:IPlantProps):Promise<void>{
     try {
+        
+        const nexTime = new Date(plant.dateTimeNotification);
+        const now = new Date();
+
+        const {times} = plant.frequency;
+        const {repeat_every} = plant.frequency;
+
+        if(repeat_every === 'week'){
+
+            const inverval = Math.trunc(7 / times);
+            nexTime.setDate(now.getDate() + inverval);
+
+        }else{
+
+            nexTime.setDate(nexTime.getDate() + 1);
+
+        }
+
+        const seconds = Math.abs(Math.ceil(now.getTime() - nexTime.getTime()/1000));
+
         const data = await AsyncStorege.getItem('@plantManager:plants');
         const oldPlants = data ? (JSON.parse(data) as IStoragePlantProps): {};
 

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import { RFValue } from 'react-native-responsive-fontsize';
-import { RectButtonProps, RectButton } from 'react-native-gesture-handler'
+import { RectButtonProps, RectButton } from 'react-native-gesture-handler';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Animated from 'react-native-reanimated';
 
 import colors from '../../styles/colors';
 import { SvgCssUri } from 'react-native-svg';
@@ -18,36 +21,56 @@ import {
 } from './styles';
 
 
-export function PlantCardSecundary ({name, photo, promximaRega, ...rest}:IPlantProps){
+export function PlantCardSecundary ({handleRemove, name, photo, promximaRega, ...rest}:IPlantProps){
     return(
         
-        <RectButton 
-            style={styles.container}
-            {...rest}
+        <Swipeable
+            overshootRight={false}
+            renderRightActions={() => (
+                <Animated.View>
+                    <View style={styles.buttonRemoveView}>
+                        <RectButton
+                            style={styles.buttonRemove}
+                            onPress={handleRemove}
+                        >
+                            <Feather 
+                                name="trash-2" 
+                                size={RFValue(25)}
+                                color={colors.white
+                            }/>
+                        </RectButton>
+                    </View>
+                </Animated.View>
+            )}
         >
-            <Ajust>
+            <RectButton 
+                style={styles.container}
+                {...rest}
+            >
+                <Ajust>
 
-                <SvgCssUri 
-                    uri={photo} 
-                    width={RFValue(50)}
-                    height={RFValue(50)}
-                    style={styles.imagem}
-                />
+                    <SvgCssUri 
+                        uri={photo} 
+                        width={RFValue(50)}
+                        height={RFValue(50)}
+                        style={styles.imagem}
+                    />
 
-                <TextoButton >
-                    {name}
-                </TextoButton>
+                    <TextoButton >
+                        {name}
+                    </TextoButton>
 
-            </Ajust>
+                </Ajust>
 
-            <ContainerRegar>
+                <ContainerRegar>
 
-                <TitleRegar>Regas às</TitleRegar>
-                <HoraRegar>{`${new Date(promximaRega).getHours()}:${new Date(promximaRega).getMinutes()}`}</HoraRegar>
+                    <TitleRegar>Regas às</TitleRegar>
+                    <HoraRegar>{`${new Date(promximaRega).getHours()}:${new Date(promximaRega).getMinutes()}`}</HoraRegar>
 
-            </ContainerRegar>
+                </ContainerRegar>
 
-        </RectButton>
+            </RectButton>
+        </Swipeable>
     )
 }
 
@@ -68,5 +91,29 @@ const styles = StyleSheet.create({
     imagem: {
         margin: RFValue(10),
         marginTop: RFValue(10),
+    },
+
+    buttonRemoveView:{
+        width: RFValue(80),
+        height: RFValue(70),
+        backgroundColor: colors.red,
+        marginTop: RFValue(10),
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        position: 'relative',
+        borderBottomRightRadius:RFValue(16),
+        borderTopRightRadius:RFValue(16),
+        right:RFValue(13),
+    },
+
+    buttonRemove:{
+        width: RFValue(90),
+        height: RFValue(70),
+        backgroundColor: colors.red,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'relative',
+        right:RFValue(-13),
+        borderRadius: RFValue(16),
     }
 })

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { formatDistance } from 'date-fns';
 import { pt }  from 'date-fns/locale';
 import { FlatList } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { StyleSheet, ActivityIndicator} from 'react-native';
+import AsyncStorege from '@react-native-async-storage/async-storage';
+import { StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { 
     Container, 
@@ -18,7 +20,7 @@ import {
 import { Header } from './../../components/Header';
 import { Load } from './../../components/Load';
 import waterdrop from './../../assets/waterdrop.png'
-import { IPlantProps, loadPlant } from './../../libs/storage';
+import { IPlantProps, loadPlant, IStoragePlantProps } from './../../libs/storage';
 import { PlantCardSecundary } from './../../components/PlantCardSecundary';
 
 const MinhasPlantas: React.FC = () => {
@@ -32,7 +34,46 @@ const MinhasPlantas: React.FC = () => {
         loadStorageData();
     },[]);
 
+    useFocusEffect(
+        React.useCallback(() => {
+            loadStorageData();
+        }, [])
+      );
+
+    async function handleRemove(plant:IPlantProps) {
+        Alert.alert('Remover', `Deseja remover a ${plant.name} ?`,[
+            {
+                text:'Não 🙏🏽',
+                style: 'cancel'
+            },
+            {
+                text:'Sim 😪',
+                onPress: async () => {
+                    try {
+                        const data = await AsyncStorege.getItem('@plantManager:plants');
+                        const plants = data ? (JSON.parse(data) as IStoragePlantProps) : {};
+
+                        delete plants[plant.id];
+
+                        await AsyncStorege.setItem(
+                            '@plantManager:plants',
+                            JSON.stringify(plants)
+
+                        );
+
+                        setMinhasPLantas((oldData) =>  oldData.filter((item) => item.id !== plant.id)  );
+
+                    } catch (error) {
+                        console.log(error);
+                        Alert.alert(`Não foi possivel remover a ${plant.name} tente novamente mais tarde 😪! `)
+                    }
+                }
+            }
+        ])
+    }
+
     async function loadStorageData() {
+        setLoading(true);
         const plantsStoraged = await loadPlant();
 
         const nextTime = formatDistance (
@@ -86,6 +127,7 @@ const MinhasPlantas: React.FC = () => {
                             photo= {item.photo}
                             name={item.name}
                             promximaRega={item.dateTimeNotification}
+                            handleRemove={() => {handleRemove(item)}}
                         />
                     )}
                     showsVerticalScrollIndicator={false}
