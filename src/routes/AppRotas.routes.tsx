@@ -8,14 +8,15 @@ import EscolhaPlanta from '../pages/EscolhaPlanta';
 import Planta from '../pages/Planta';
 import MinhasPlantas from '../pages/MinhasPlantas';
 import TudoCerto from '../pages/TudoCerto';
+import AuthRoutes from './stackRotas.routes';
 
 
 const Navegar =  createNativeStackNavigator();
 
 const AppRoutes: React.FC = () => (
     <Navegar.Navigator 
-        // initialRouteName="BemVindo"
-        initialRouteName="MinhasPlantas"
+        initialRouteName="BemVindo"
+        // initialRouteName="MinhasPlantas"
         // initialRouteName="Planta"
         screenOptions={{ 
             headerShown: false,
@@ -38,7 +39,7 @@ const AppRoutes: React.FC = () => (
 
         <Navegar.Screen 
             name='EscolhaPlanta'
-            component={EscolhaPlanta}
+            component={AuthRoutes}
         />
 
         <Navegar.Screen 
@@ -53,7 +54,7 @@ const AppRoutes: React.FC = () => (
 
         <Navegar.Screen 
             name='MinhasPlantas'
-            component={MinhasPlantas}
+            component={AuthRoutes}
         />
 
 
