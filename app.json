@@ -8,6 +8,9 @@
     ],
     "ios": {
       "bundleIdentifier": "com.samirfernandes26.plantmanager"
+    },
+    "android": {
+      "package": "com.samirfernandes26.plantmanager"
     }
   },
   "name": "plantmanager"
