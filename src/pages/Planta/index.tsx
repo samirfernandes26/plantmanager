@@ -14,6 +14,7 @@ import {
     Dicas, 
     ImageGota, 
     MostrarHoraAndroid, 
+    MudarHoraAndroid, 
     NamePlanta, 
     SubContconainer, 
     SubDica, 
@@ -131,8 +132,12 @@ const Planta: React.FC = () => {
                         >
 
                             <MostrarHoraAndroid>
-                               {` Mudar ${format(selectedDateTime, 'HH:mm')} `}
+                               {` ${format(selectedDateTime, 'HH:MM')} `}
                             </MostrarHoraAndroid>
+
+                            <MudarHoraAndroid>
+                               Mudar horario
+                            </MudarHoraAndroid>
 
                         </ButtomMudarHorario>
                     )

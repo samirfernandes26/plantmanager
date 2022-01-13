@@ -76,7 +76,7 @@ export const AlertLabel = styled.Text`
     font-size: ${RFValue(11)}px;
     text-align: center;
     margin-bottom: ${RFValue(8)}px;
-    margin-top: ${RFValue(8)}px;
+    margin-top: ${RFValue(-10)}px;
     color: ${colors.heading};
     font-family: ${fonts.semiBold};
 `;
@@ -85,15 +85,25 @@ export const ButtomMudarHorario = styled.TouchableOpacity`
     width: 100%;
     height: ${RFValue(60)}px;
     align-items: center;
-    margin-bottom: ${RFValue(10)}px;
+    margin-bottom: ${RFValue(40)}px;
     margin-top: ${RFValue(10)}px;
 `;
 
 export const MostrarHoraAndroid = styled.Text`
     font-size: ${RFValue(20)}px;
     text-align: center;
-    margin-bottom: ${RFValue(8)}px;
     margin-top: ${RFValue(8)}px;
     color: ${colors.heading};
-    font-family: ${fonts.semiBold};
+    font-family: ${fonts.bold};
+`
+export const MudarHoraAndroid = styled.Text`
+    font-size: ${RFValue(20)}px;
+    text-align: center;
+    margin: ${RFValue(10)}px;
+    color: ${colors.heading};
+    font-family: ${fonts.regular};
+    border-width: ${RFValue(1)}px;
+    border-radius: ${RFValue(8)}px;
+    border-color:${colors.heading};
+    padding: ${RFValue(8)}px;
 `
