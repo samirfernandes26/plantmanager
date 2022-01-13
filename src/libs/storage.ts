@@ -1,5 +1,6 @@
 import AsyncStorege from '@react-native-async-storage/async-storage'
 import { isBefore, format } from 'date-fns'
+import * as Notifications from 'expo-notifications'
 
 export interface IPlantProps{
     id?: string;
@@ -45,12 +46,29 @@ export async function savePlant(plant:IPlantProps):Promise<void>{
 
         const seconds = Math.abs(Math.ceil(now.getTime() - nexTime.getTime()/1000));
 
+        const notificationId = await Notifications.scheduleNotificationAsync({
+            content:{
+                title:'Heeey, 🌱',
+                body:`Está na hora de cuidar da sua ${plant.name}`,
+                sound: true,
+                priority: Notifications.AndroidNotificationPriority.HIGH,
+                data:{
+                    plant
+                },
+            },
+            trigger:{
+                seconds: seconds < 60 ? 60 : seconds,
+                repeats: true
+            }
+        })
+
         const data = await AsyncStorege.getItem('@plantManager:plants');
         const oldPlants = data ? (JSON.parse(data) as IStoragePlantProps): {};
 
         const newPlant = {
             [plant.id]:{
-                data:plant
+                data:plant,
+                notificationId
             }
         }
 
