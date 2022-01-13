@@ -43,7 +43,7 @@ export function PlantCardSecundary ({name, photo, promximaRega, ...rest}:IPlantP
             <ContainerRegar>
 
                 <TitleRegar>Regas às</TitleRegar>
-                <HoraRegar>10:00</HoraRegar>
+                <HoraRegar>{`${new Date(promximaRega).getHours()}:${new Date(promximaRega).getMinutes()}`}</HoraRegar>
 
             </ContainerRegar>
 

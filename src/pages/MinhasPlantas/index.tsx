@@ -82,10 +82,12 @@ const MinhasPlantas: React.FC = () => {
                         <PlantCardSecundary 
                             photo= {item.photo}
                             name={item.name}
+                            promximaRega={item.dateTimeNotification}
                         />
                     )}
                     showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{flex:1}}
+                    // contentContainerStyle={{flex:1}}
+                    enabled
 
                 />
 

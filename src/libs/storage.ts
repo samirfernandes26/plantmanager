@@ -13,7 +13,7 @@ export interface IPlantProps{
         repeat_every?: string;
     }
     dateTimeNotification?: Date;
-    promximaRega?:string;
+    promximaRega?:Date;
 }
 
 interface IStoragePlantProps {
