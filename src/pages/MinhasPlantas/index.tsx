@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 import { Header } from './../../components/Header';
-
+import { Load } from './../../components/Load';
 import waterdrop from './../../assets/waterdrop.png'
 import { IPlantProps, loadPlant } from './../../libs/storage';
 import { PlantCardSecundary } from './../../components/PlantCardSecundary';
@@ -49,6 +49,9 @@ const MinhasPlantas: React.FC = () => {
         setLoading(false);
     }
     
+    if(loading){
+        return <Load/>
+    }
     return (
         <Container>
             
